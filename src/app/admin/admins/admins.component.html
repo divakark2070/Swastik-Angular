@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="form-group col-lg-12">
                                         <label for="3">Password</label>
-                                        <input type="password" class="form-control" id="3" formControlName="password"
+                                        <input type="text" class="form-control" id="3" formControlName="password"
                                             placeholder="Password">
                                         <em class="error text-danger small"
                                             *ngIf="formdata.controls.password.touched && formdata.controls.password.invalid">Please
@@ -50,7 +50,7 @@
                                 <div class="modal-footer">
                                     <input type="submit" [disabled]="formdata.invalid"  value="Submit"
                                     class="btn btn-success me-2" />
-                                    <button type="button" class="btn btn-light" id="btnclose" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-danger" id="btnclose" (click)="reset()"data-bs-dismiss="modal">Cancel</button>
                                   </div>
                             </form><br>
                         </div> 
@@ -69,7 +69,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Action</th>
+                            <th class="text-center">Action</th>
                             <th>No</th>
                             <th>Name</th>
                             <th>Username</th>
@@ -78,7 +78,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let data of result; let i=index">
-                            <td>
+                            <td class="text-center">
                                 <button (click)="edit(data._id)"
                                     class="mb-2 mr-2 btn-icon btn-icon-only btn-pill btn btn-primary" data-bs-toggle="modal"data-bs-target="#exampleModal-2"><i
                                         class="ti-pencil"> </i></button> &nbsp;&nbsp;&nbsp;

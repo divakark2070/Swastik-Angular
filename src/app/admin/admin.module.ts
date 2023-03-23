@@ -12,7 +12,8 @@ import { FarmersComponent } from './farmers/farmers.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AdminsComponent } from './admins/admins.component';
-
+import { CropsComponent } from './crops/crops.component';
+import { RecommendationsComponent } from './recommendations/recommendations.component';
 
 
 @NgModule({
@@ -20,7 +21,9 @@ import { AdminsComponent } from './admins/admins.component';
     LandingComponent,
     DashboardComponent,
     FarmersComponent,
-    AdminsComponent
+    AdminsComponent,
+    CropsComponent,
+    RecommendationsComponent
     
     
 

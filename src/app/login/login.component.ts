@@ -8,41 +8,43 @@ import { ApiService } from '../shared/api.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
-  formdata:any;
-  id="";
-  result:any;
+export class LoginComponent implements OnInit {
+  formdata: any;
+  id = "";
+  result: any;
+  message:any;
 
-  constructor(private api:ApiService, private router:Router){}
+  constructor(private api: ApiService, private router: Router) { }
 
   ngOnInit(): void {
-    this.load()
-  }
-  load(){
-    // this.id ="";
-    // this.api.get("login").subscribe((result:any)=>{
-    //   console.log(result);
+    // if (localStorage.getItem("token") == null)
+    //   localStorage.setItem("token", "token");
+    this.api.post("gettoken", null).subscribe((result: any) => {
+      console.log(result);
       
-    //   this.result = result.data;
-    // })
-    this.formdata= new FormGroup({
-      username:new FormControl("",Validators.compose([Validators.required])),
-      password:new FormControl("",Validators.compose([Validators.required]))
+      localStorage.setItem("token", result.token);
+    });
+    this.load();
+  }
+  load() {
+    this.formdata = new FormGroup({
+      username: new FormControl("", Validators.compose([Validators.required])),
+      password: new FormControl("", Validators.compose([Validators.required]))
     })
   };
 
-
-
-  submit(data:any){
-    alert("ffg")
-    this.api.post("login",data).subscribe((result:any)=>{
-      console.log(result);
-      if(result.success == "success"){
-        this.router.navigate(['/admin/dashboard'])
+  submit(data: any) {
+    this.api.post("login", data).subscribe((result: any) => {
+      if (result.status == "success") {
+        localStorage.setItem("user", result.data);
+        localStorage.setItem("token", result.token);
+        this.router.navigate(['/admin/dashboard']);
       }
-      
-  })
+      else{
+        this.message = result.data.toString();
+      }
+    })
   }
-  
+
 
 }

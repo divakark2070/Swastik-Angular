@@ -46,12 +46,13 @@ export class AdminsComponent implements OnInit{
   }
 
   reset(){
-    this.id = "";
-    this.formdata= new FormGroup({
-      name:new FormControl("",Validators.compose([Validators.required])),
-      username:new FormControl("",Validators.compose([Validators.required])),
-      password:new FormControl("",Validators.compose([Validators.required]))
-    })
+    this.load();
+    // this.id = "";
+    // this.formdata= new FormGroup({
+    //   name:new FormControl("",Validators.compose([Validators.required])),
+    //   username:new FormControl("",Validators.compose([Validators.required])),
+    //   password:new FormControl("",Validators.compose([Validators.required]))
+    // })
 
   }
 

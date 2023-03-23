@@ -8,8 +8,9 @@
                 <img src="assets/images/logo.svg" alt="logo">
               </div>
               <h6 class="font-weight-light">Sign in to continue.</h6>
-              <form class="pt-3">
-                <div class="form-group" [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
+              <span class="text-danger">{{ message}}</span>
+              <form class="pt-3" [formGroup]="formdata" (ngSubmit)="submit(formdata.value)">
+                <div class="form-group">
                   <label><h5>Username</h5></label>
                   <input type="username" class="form-control form-control-lg" placeholder="Username" formControlName="username">
                   <em class="error text-danger small"*ngIf="formdata.controls.username.touched && formdata.controls.username.invalid">Please
@@ -25,7 +26,7 @@
 
                 <div class="mt-3">
                   <!-- <input type="submit" value="Sign in" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"> -->
-                  <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" routerLink="/admin/dashboard">SIGN IN</a>
+                  <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="Sign In" />
                 </div>
 
 
@@ -33,14 +34,6 @@
                   
                   <a href="#" class="auth-link text-black">Forgot password?</a>
                 </div>
-                <!-- <div class="mb-2">
-                  <button type="button" class="btn btn-block btn-facebook auth-form-btn">
-                    <i class="ti-facebook me-2"></i>Connect using facebook
-                  </button>
-                </div> -->
-                <!-- <div class="text-center mt-4 font-weight-light">
-                  Don't have an account? <a href="register.html" class="text-primary">Create</a>
-                </div> -->
               </form>
             </div>
           </div>
